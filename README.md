@@ -11,8 +11,8 @@ Lightweight alternative to SweetAlert2 with glassmorphism UI.
 ## 🌐 CDN (jsDelivr)
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/NovaUI@1.0.0/nova.css">
-<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/NovaUI@1.0.0/nova.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI/nova.css">
+<script src="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI/nova.js"></script>
 ```
 
 #🚀 Basic Usage
@@ -45,5 +45,25 @@ Nova.show({
   message: "Something went wrong",
   icon: "error",
   buttonText: "Retry"
+});
+```
+
+##🟡 Warning
+```javascript
+Nova.show({
+  title: "Warning",
+  message: "Be careful with this action",
+  icon: "warning",
+  buttonText: "OK"
+});
+```
+
+## Info
+```javascript
+Nova.show({
+  title: "Info",
+  message: "Here is some information",
+  icon: "info",
+  buttonText: "OK"
 });
 ```

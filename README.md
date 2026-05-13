@@ -67,3 +67,110 @@ Nova.show({
   buttonText: "OK"
 });
 ```
+
+# ❌ Confirm
+
+## Yes / No
+```javascript
+const result = await Nova.confirm({
+  title: "Delete item?",
+  message: "This action cannot be undone",
+  confirmText: "Yes",
+  cancelText: "No"
+});
+
+if (result) {
+  console.log("Confirmed");
+} else {
+  console.log("Cancelled");
+}
+```
+
+# 🧾 Input Form
+
+## ✏️ Text input
+```javascript
+const name = await Nova.show({
+  title: "Your name",
+  message: "Enter your name",
+  input: "text",
+  placeholder: "John Doe",
+  buttonText: "Submit"
+});
+```
+## 📋 Select
+```javascript
+const country = await Nova.show({
+  title: "Choose country",
+  input: "select",
+  options: [
+    { value: "fr", label: "France" },
+    { value: "us", label: "USA" }
+  ],
+  buttonText: "Confirm"
+});
+```
+
+## 📝 Textarea
+```javascript
+const message = await Nova.show({
+  title: "Message",
+  input: "textarea",
+  placeholder: "Write something..."
+});
+```
+
+# 🎯 Toast Shortcuts
+
+## 🟢 Success
+```javascript
+Nova.notify({
+  title: "Success",
+  message: "Operation completed",
+  type: "success"
+});
+```
+
+## 🔴 Error
+```javascript
+Nova.notify({
+  title: "Error",
+  message: "Something failed",
+  type: "error"
+});
+```
+
+## 🟡 Warning
+```javascript
+Nova.notify({
+  title: "Warning",
+  message: "Check your input",
+  type: "warning"
+});
+```
+
+## 🔵 Info
+```javascript
+Nova.notify({
+  title: "Info",
+  message: "New update available",
+  type: "info"
+});
+```
+
+# 🎨 UI Design
+- Glassmorphism blur effect
+- Smooth animations
+- SVG icons
+- Mobile responsive
+- Modern SaaS style
+
+#📱 Responsive
+- Desktop → top right notifications
+- Mobile → centered top notifications
+- Modal → centered always
+
+# 🚀 Roadmap
+- Nova.prompt()
+- Queue system (stack modals)
+- Spring animations

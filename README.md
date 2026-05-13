@@ -165,7 +165,7 @@ Nova.notify({
 - Mobile responsive
 - Modern SaaS style
 
-#📱 Responsive
+# 📱 Responsive
 - Desktop → top right notifications
 - Mobile → centered top notifications
 - Modal → centered always

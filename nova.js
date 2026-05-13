@@ -1,12 +1,6 @@
 class Nova {
 
   /* =========================
-     ⛔ ANTI-SPAM
-  ========================== */
-  static lastNotifyTime = 0;
-  static notifyCooldown = 400;
-
-  /* =========================
      🪟 ALERT / MODAL
   ========================== */
 
@@ -16,7 +10,6 @@ class Nova {
     buttonText = "OK",
 
     icon = "success",
-    customIcon = null,
 
     background = "rgba(25,25,28,0.95)",
     textColor = "#fff",
@@ -54,7 +47,7 @@ class Nova {
         <div class="nova-modal" style="background:${background};color:${textColor}">
           
           <div class="nova-icon">
-            ${customIcon || Nova.icons[icon] || Nova.icons.success}
+            ${Nova.icons[icon] || Nova.icons.success}
           </div>
 
           <h2 class="nova-title">${title}</h2>
@@ -84,20 +77,14 @@ class Nova {
   }
 
   /* =========================
-     ❌ CONFIRM (YES / NO)
+     ❌ CONFIRM
   ========================== */
 
   static confirm({
-    title = "Confirmation",
-    message = "Are you sure ?",
-
+    title = "Confirm",
+    message = "Are you sure?",
     confirmText = "Yes",
     cancelText = "No",
-
-    icon = "warning",
-
-    background = "rgba(25,25,28,0.95)",
-    textColor = "#fff",
 
     confirmColor = "#22c55e",
     cancelColor = "#ef4444"
@@ -109,22 +96,22 @@ class Nova {
       overlay.className = "nova-overlay";
 
       overlay.innerHTML = `
-        <div class="nova-modal" style="background:${background};color:${textColor}">
+        <div class="nova-modal">
           
           <div class="nova-icon">
-            ${Nova.icons[icon] || Nova.icons.warning}
+            ${Nova.icons.warning}
           </div>
 
           <h2 class="nova-title">${title}</h2>
           <p class="nova-message">${message}</p>
 
-          <div class="nova-confirm-actions">
+          <div class="nova-actions">
 
-            <button class="nova-btn nova-cancel" style="background:${cancelColor}">
+            <button class="nova-btn" style="background:${cancelColor}">
               ${cancelText}
             </button>
 
-            <button class="nova-btn nova-confirm" style="background:${confirmColor}">
+            <button class="nova-btn" style="background:${confirmColor}">
               ${confirmText}
             </button>
 
@@ -136,26 +123,21 @@ class Nova {
       document.body.appendChild(overlay);
       document.body.style.overflow = "hidden";
 
-      const yes = overlay.querySelector(".nova-confirm");
-      const no = overlay.querySelector(".nova-cancel");
+      const [cancelBtn, confirmBtn] = overlay.querySelectorAll("button");
 
-      const close = (result) => {
-        overlay.classList.add("nova-out");
-
-        setTimeout(() => {
-          overlay.remove();
-          document.body.style.overflow = "auto";
-          resolve(result);
-        }, 200);
+      const close = (res) => {
+        overlay.remove();
+        document.body.style.overflow = "auto";
+        resolve(res);
       };
 
-      yes.onclick = () => close(true);
-      no.onclick = () => close(false);
+      cancelBtn.onclick = () => close(false);
+      confirmBtn.onclick = () => close(true);
     });
   }
 
   /* =========================
-     🔔 NOTIFICATIONS (TOAST)
+     🔔 TOAST
   ========================== */
 
   static notify({
@@ -164,10 +146,6 @@ class Nova {
     type = "info",
     duration = 5000
   } = {}) {
-
-    const now = Date.now();
-    if (now - Nova.lastNotifyTime < Nova.notifyCooldown) return;
-    Nova.lastNotifyTime = now;
 
     let container = document.querySelector(".nova-toast-container");
 
@@ -197,9 +175,6 @@ class Nova {
 
     requestAnimationFrame(() => toast.classList.add("show"));
 
-    const bar = toast.querySelector(".nova-toast-bar");
-    bar.style.animationDuration = duration + "ms";
-
     setTimeout(() => {
       toast.classList.remove("show");
       setTimeout(() => toast.remove(), 200);
@@ -207,12 +182,11 @@ class Nova {
   }
 
   /* =========================
-     🪟 CLOSE MODAL
+     🧹 CLOSE
   ========================== */
 
   static close(el) {
     el.classList.add("nova-out");
-
     setTimeout(() => {
       el.remove();
       document.body.style.overflow = "auto";
@@ -220,78 +194,67 @@ class Nova {
   }
 
   /* =========================
-     🎨 MODAL ICONS (SVG)
+     🎨 ICONS (FIXED)
   ========================== */
 
   static icons = {
     success: `
-      <svg viewBox="0 0 24 24" class="nova-svg">
-        <circle cx="12" cy="12" r="10" class="circle"/>
-        <path d="M7 12.5l3 3 7-7" class="check"/>
+      <svg class="nova-svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#22c55e" stroke-width="2"/>
+        <path d="M7 12l3 3 7-7"
+          fill="none"
+          stroke="#22c55e"
+          stroke-width="2"
+          stroke-linecap="round"/>
       </svg>
     `,
+
     error: `
-      <svg viewBox="0 0 24 24" class="nova-svg">
-        <circle cx="12" cy="12" r="10" class="circle error"/>
-        <path d="M8 8l8 8M16 8l-8 8" class="cross"/>
+      <svg class="nova-svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#ef4444" stroke-width="2"/>
+        <path d="M8 8l8 8M16 8l-8 8"
+          fill="none"
+          stroke="#ef4444"
+          stroke-width="2"
+          stroke-linecap="round"/>
       </svg>
     `,
+
     warning: `
-      <svg viewBox="0 0 24 24" class="nova-svg">
-        <circle cx="12" cy="12" r="10" class="circle warn"/>
-        <path d="M12 7v6"/>
-        <circle cx="12" cy="16.5" r="1"/>
+      <svg class="nova-svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#f59e0b" stroke-width="2"/>
+        <path d="M12 7v7"
+          stroke="#f59e0b"
+          stroke-width="2"
+          stroke-linecap="round"/>
+        <circle cx="12" cy="17" r="1" fill="#f59e0b"/>
       </svg>
     `,
+
     info: `
-      <svg viewBox="0 0 24 24" class="nova-svg">
-        <circle cx="12" cy="12" r="10" class="circle info"/>
-        <path d="M12 11v6"/>
-        <circle cx="12" cy="8" r="1"/>
+      <svg class="nova-svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+        <path d="M12 10v7"
+          stroke="#3b82f6"
+          stroke-width="2"
+          stroke-linecap="round"/>
+        <circle cx="12" cy="7" r="1" fill="#3b82f6"/>
       </svg>
     `
   };
 
   /* =========================
-     🔔 TOAST ICONS (SVG)
+     🔔 TOAST ICONS
   ========================== */
 
   static toastIcons = {
-    success: `
-      <svg viewBox="0 0 24 24" class="nova-toast-svg">
-        <path d="M20 6L9 17l-5-5"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"/>
-      </svg>
-    `,
-    error: `
-      <svg viewBox="0 0 24 24" class="nova-toast-svg">
-        <path d="M18 6L6 18M6 6l12 12"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"/>
-      </svg>
-    `,
-    info: `
-      <svg viewBox="0 0 24 24" class="nova-toast-svg">
-        <path d="M12 16v-4m0-4h.01"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"/>
-      </svg>
-    `,
-    warning: `
-      <svg viewBox="0 0 24 24" class="nova-toast-svg">
-        <path d="M12 9v4m0 4h.01"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"/>
-      </svg>
-    `
+    success: `<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="currentColor" fill="none" stroke-width="2"/></svg>`,
+    error: `<svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2"/></svg>`,
+    info: `<svg viewBox="0 0 24 24"><path d="M12 16v-4m0-4h.01" stroke="currentColor" fill="none" stroke-width="2"/></svg>`,
+    warning: `<svg viewBox="0 0 24 24"><path d="M12 9v4m0 4h.01" stroke="currentColor" fill="none" stroke-width="2"/></svg>`
   };
 }
+
+/* GLOBAL */
+window.Nova = Nova;
+window.NovaUI = Nova;

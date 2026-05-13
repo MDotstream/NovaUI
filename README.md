@@ -15,9 +15,9 @@ Lightweight alternative to SweetAlert2 with glassmorphism UI.
 <script src="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI/nova.js"></script>
 ```
 
-#🚀 Basic Usage
+# 🚀 Basic Usage
 
-##🪟 Alert
+## 🪟 Alert
 ```javascript
 Nova.show({
   title: "Hello",
@@ -26,9 +26,9 @@ Nova.show({
   buttonText: "OK"
 });
 ```
-#🎯 Prebuilt Alerts (Shortcuts)
+# 🎯 Prebuilt Alerts (Shortcuts)
 
-##🟢 Success
+## 🟢 Success
 ```javascript
 Nova.show({
   title: "Success",
@@ -38,7 +38,7 @@ Nova.show({
 });
 ```
 
-##🔴 Error
+## 🔴 Error
 ```javascript
 Nova.show({
   title: "Error",
@@ -48,7 +48,7 @@ Nova.show({
 });
 ```
 
-##🟡 Warning
+## 🟡 Warning
 ```javascript
 Nova.show({
   title: "Warning",
@@ -58,7 +58,7 @@ Nova.show({
 });
 ```
 
-## Info
+## 🔵 Info
 ```javascript
 Nova.show({
   title: "Info",

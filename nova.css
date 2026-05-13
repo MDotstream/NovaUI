@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================
+   🪟 MODAL
+========================= */
+
+.nova-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(14px);
+
+  z-index: 99999;
+}
+
+.nova-modal {
+  width: 380px;
+  padding: 28px;
+
+  border-radius: 22px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+
+  animation: popIn 0.25s ease;
+}
+
+.nova-icon {
+  width: 86px;
+  height: 86px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-svg {
+  width: 86px;
+  height: 86px;
+}
+
+/* TEXT */
+.nova-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nova-message {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* BUTTON */
+.nova-btn {
+  margin-top: 18px;
+
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 14px;
+
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* INPUT */
+.nova-input {
+  width: 100%;
+  margin-top: 12px;
+
+  padding: 10px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: rgba(0,0,0,0.2);
+  color: white;
+
+  outline: none;
+}
+
+/* CONFIRM BUTTONS */
+.nova-confirm-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.nova-confirm-actions .nova-btn {
+  width: 100%;
+}
+
+/* =========================
+   🔔 TOAST
+========================= */
+
+.nova-toast-container {
+  position: fixed;
+  z-index: 99999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 769px) {
+  .nova-toast-container {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nova-toast-container {
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.nova-toast {
+  min-width: 260px;
+
+  display: flex;
+  gap: 10px;
+
+  padding: 12px 14px;
+
+  border-radius: 14px;
+
+  background: rgba(25,25,28,0.6);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  color: white;
+
+  opacity: 0;
+  transform: translateY(-10px);
+
+  transition: 0.25s ease;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.nova-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nova-toast-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  height: 3px;
+  width: 100%;
+
+  transform-origin: left;
+
+  animation: novaProgress linear forwards;
+}
+
+.nova-success .nova-toast-bar { background: #22c55e; }
+.nova-error .nova-toast-bar { background: #ef4444; }
+.nova-info .nova-toast-bar { background: #3b82f6; }
+.nova-warning .nova-toast-bar { background: #f59e0b; }
+
+/* =========================
+   🎬 ANIMATIONS
+========================= */
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes novaProgress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}

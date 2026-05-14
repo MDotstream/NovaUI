@@ -1,98 +1,541 @@
-body {
+body{
   font-family: Arial;
 }
 
-/* OVERLAY */
-.nova-overlay {
+/* =========================
+   OVERLAY
+========================= */
+
+.nova-overlay{
+
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(12px);
+
+  background:
+    rgba(0,0,0,.65);
+
+  backdrop-filter:
+    blur(10px);
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
   z-index: 9999;
+
+  animation:
+    novaFade .25s ease;
 }
 
-/* MODAL */
-.nova-modal {
-  width: 360px;
-  padding: 24px;
-  border-radius: 18px;
-  background: rgba(25,25,28,0.95);
+/* =========================
+   MODAL
+========================= */
+
+.nova-modal{
+
+  width: 370px;
+
+  padding: 26px;
+
+  border-radius: 22px;
+
+  background:
+    rgba(25,25,28,.96);
+
   color: white;
+
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.45);
+
+  animation:
+    novaModalShow .3s ease;
 }
 
-/* ICON FIX */
-.nova-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 10px;
+/* =========================
+   ICON
+========================= */
+
+.nova-icon-wrapper{
+
   display: flex;
   justify-content: center;
+
+  margin-bottom: 14px;
+}
+
+.nova-icon{
+
+  width: 90px;
+  height: 90px;
+
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.nova-svg {
-  width: 80px;
-  height: 80px;
+.nova-icon svg{
+
+  width: 90px;
+  height: 90px;
+
+  fill: none;
+
+  stroke-width: 2.5;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-/* TEXT */
-.nova-title {
-  font-size: 20px;
+/* =========================
+   SUCCESS
+========================= */
+
+.nova-svg-success{
+
+  stroke: #22c55e;
+}
+
+.nova-circle-success{
+
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+
+  animation:
+    novaStroke .6s ease forwards;
+}
+
+.nova-check-success{
+
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+
+  animation:
+    novaStroke .35s ease forwards .55s;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.nova-svg-error{
+
+  stroke: #ef4444;
+}
+
+.nova-circle-error{
+
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+
+  animation:
+    novaStroke .5s ease forwards;
+}
+
+.nova-x-error{
+
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+
+  animation:
+    novaStroke .3s ease forwards .45s;
+}
+
+/* =========================
+   WARNING
+========================= */
+
+.nova-svg-warning{
+
+  stroke: #f59e0b;
+}
+
+.nova-circle-warning{
+
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+
+  animation:
+    novaStroke .5s ease forwards;
+}
+
+.nova-warning-line{
+
+  stroke-dasharray: 25;
+  stroke-dashoffset: 25;
+
+  animation:
+    novaStroke .35s ease forwards .45s;
+}
+
+.nova-warning-dot{
+
+  fill: #f59e0b;
+
+  opacity: 0;
+
+  animation:
+    novaDot .2s ease forwards .75s;
+}
+
+/* =========================
+   INFO
+========================= */
+
+.nova-svg-info{
+
+  stroke: #3b82f6;
+}
+
+.nova-circle-info{
+
+  stroke-dasharray: 160;
+  stroke-dashoffset: 160;
+
+  animation:
+    novaStroke .5s ease forwards;
+}
+
+.nova-info-line{
+
+  stroke-dasharray: 25;
+  stroke-dashoffset: 25;
+
+  animation:
+    novaStroke .35s ease forwards .45s;
+}
+
+.nova-info-dot{
+
+  fill: #3b82f6;
+
+  opacity: 0;
+
+  animation:
+    novaDot .2s ease forwards .72s;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.nova-title{
+
   margin: 0;
+
+  font-size: 23px;
 }
 
-.nova-message {
-  font-size: 14px;
-  opacity: 0.7;
-}
+.nova-message{
 
-/* INPUT */
-.nova-input {
-  width: 100%;
   margin-top: 10px;
-  padding: 10px;
-  border-radius: 10px;
+
+  opacity: .72;
+
+  line-height: 1.5;
+
+  font-size: 14px;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.nova-input{
+
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 12px;
+
   border: none;
   outline: none;
-}
 
-/* BUTTON */
-.nova-btn {
-  margin-top: 12px;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
+  border-radius: 12px;
+
+  background:
+    rgba(255,255,255,.08);
+
   color: white;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
+
+  box-sizing: border-box;
 }
 
-/* CONFIRM */
-.nova-actions {
+/* =========================
+   BUTTON
+========================= */
+
+.nova-btn{
+
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.nova-btn:hover{
+
+  transform:
+    translateY(-2px);
+
+  opacity: .92;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.nova-actions{
+
   display: flex;
   gap: 10px;
 }
 
-/* TOAST */
-.nova-toast-container {
+/* =========================
+   TOAST
+========================= */
+
+.nova-toast-container{
+
   position: fixed;
-  top: 15px;
-  right: 15px;
+
+  top: 18px;
+  right: 18px;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
+  gap: 12px;
+
+  z-index: 99999;
 }
 
-.nova-toast {
-  background: rgba(30,30,35,0.9);
-  padding: 10px;
-  border-radius: 10px;
+.nova-toast{
+
+  width: 300px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background:
+    rgba(25,25,28,.96);
+
+  backdrop-filter:
+    blur(12px);
+
   color: white;
-  min-width: 200px;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.35);
+
+  transform:
+    translateX(120%);
+
+  opacity: 0;
+
+  transition:
+    .35s ease;
+}
+
+.nova-toast.show{
+
+  transform:
+    translateX(0);
+
+  opacity: 1;
+}
+
+.nova-toast-inner{
+
+  display: flex;
+  gap: 12px;
+
+  padding: 14px;
+}
+
+/* =========================
+   TOAST ICON
+========================= */
+
+.nova-toast-icon{
+
+  width: 34px;
+  height: 34px;
+
+  min-width: 34px;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-toast-icon svg{
+
+  width: 16px;
+  height: 16px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 2.2;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* COLORS */
+
+.nova-success .nova-toast-icon{
+  background: rgba(34,197,94,.15);
+  color: #22c55e;
+}
+
+.nova-error .nova-toast-icon{
+  background: rgba(239,68,68,.15);
+  color: #ef4444;
+}
+
+.nova-warning .nova-toast-icon{
+  background: rgba(245,158,11,.15);
+  color: #f59e0b;
+}
+
+.nova-info .nova-toast-icon{
+  background: rgba(59,130,246,.15);
+  color: #3b82f6;
+}
+
+/* =========================
+   TOAST TEXT
+========================= */
+
+.nova-toast-content strong{
+
+  font-size: 14px;
+}
+
+.nova-toast-content p{
+
+  margin: 4px 0 0;
+
+  opacity: .72;
+
+  font-size: 13px;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.nova-progress{
+
+  height: 3px;
+
+  width: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  transform-origin: left;
+
+  animation:
+    novaProgress linear forwards;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.nova-out{
+
+  animation:
+    novaFadeOut .25s ease forwards;
+}
+
+@keyframes novaFade{
+
+  from{
+    opacity: 0;
+  }
+
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes novaFadeOut{
+
+  to{
+    opacity: 0;
+  }
+}
+
+@keyframes novaModalShow{
+
+  0%{
+    transform:
+      scale(.7);
+
+    opacity: 0;
+  }
+
+  45%{
+    transform:
+      scale(1.04);
+  }
+
+  100%{
+    transform:
+      scale(1);
+
+    opacity: 1;
+  }
+}
+
+@keyframes novaStroke{
+
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes novaDot{
+
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes novaProgress{
+
+  from{
+    transform: scaleX(1);
+  }
+
+  to{
+    transform: scaleX(0);
+  }
 }

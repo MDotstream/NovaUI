@@ -4,6 +4,9 @@ Modern JavaScript UI library for alerts, confirms, forms and notifications.
 
 Lightweight alternative to SweetAlert2 with glassmorphism UI.
 
+## Test right now
+https://mdotstream.netlify.app/novaui/
+
 ---
 
 # 📦 Installation

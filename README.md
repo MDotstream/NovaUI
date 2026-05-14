@@ -11,8 +11,8 @@ Lightweight alternative to SweetAlert2 with glassmorphism UI.
 ## 🌐 CDN (jsDelivr)
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI/nova.css">
-<script src="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI/nova.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI@main/nova.css">
+<script src="https://cdn.jsdelivr.net/gh/MDotstream/NovaUI@main/nova.js"></script>
 ```
 
 # 🚀 Basic Usage
